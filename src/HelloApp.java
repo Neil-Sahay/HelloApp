@@ -1,7 +1,7 @@
 /**
- * HelloApp.java - UC6: Use substring() to remove trailing delimiter.
+ * HelloApp.java - UC7: Use String.join() to concatenate multiple names.
  * Accepts zero or more command-line arguments and prints a greeting.
- * Uses enhanced for loop and StringBuilder, then substring() to remove the last ", ".
+ * Uses String.join(", ", args) for efficient concatenation.
  * If no arguments, displays "Hello, World!".
  * 
  * Usage: java HelloApp [name1] [name2] ... [nameN]
@@ -12,14 +12,8 @@ public class HelloApp {
             System.out.println("Hello, World!");
             return;
         }
-
-        StringBuilder nameBuilder = new StringBuilder();
-        for (String name : args) {
-            nameBuilder.append(name).append(", ");
-        }
-
-        // Remove the trailing comma and space (last 2 characters)
-        String names = nameBuilder.substring(0, nameBuilder.length() - 2);
+        
+        String names = String.join(", ", args);
         System.out.println("Hello, " + names + "!");
     }
 }
