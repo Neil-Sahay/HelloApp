@@ -1,8 +1,8 @@
 /**
- * HelloApp.java - UC5: Enhanced for loop version.
+ * HelloApp.java - UC6: Use substring() to remove trailing delimiter.
  * Accepts zero or more command-line arguments and prints a greeting.
- * Uses an enhanced for loop (for-each) to process multiple names.
- * If no arguments are provided, displays "Hello, World!".
+ * Uses enhanced for loop and StringBuilder, then substring() to remove the last ", ".
+ * If no arguments, displays "Hello, World!".
  * 
  * Usage: java HelloApp [name1] [name2] ... [nameN]
  */
@@ -14,16 +14,12 @@ public class HelloApp {
         }
 
         StringBuilder nameBuilder = new StringBuilder();
-        boolean first = true;
-
         for (String name : args) {
-            if (!first) {
-                nameBuilder.append(", ");
-            }
-            nameBuilder.append(name);
-            first = false;
+            nameBuilder.append(name).append(", ");
         }
 
-        System.out.println("Hello, " + nameBuilder.toString() + "!");
+        // Remove the trailing comma and space (last 2 characters)
+        String names = nameBuilder.substring(0, nameBuilder.length() - 2);
+        System.out.println("Hello, " + names + "!");
     }
 }
