@@ -1,22 +1,23 @@
 /**
- * HelloApp.java - A simple Java application that greets the user by name if
- * provided as a command-line argument, or defaults to greeting "World" if no name is
- * given.
+ * HelloApp.java - A simple Java application that greets multiple users by name if
+ * provided as command-line arguments, or defaults to greeting "World" if no names are given.
  * 
- * Usage: java HelloApp [name]
- *   - If a name is provided, it displays "Hello, [Name]!"
- *   - If no name is provided, it displays "Hello, World!"
+ * Usage: java HelloApp [name1] [name2] ... [nameN]
+ *   - If names are provided, it displays "Hello, Name1, Name2, ...!"
+ *   - If no names are provided, it displays "Hello, World!"
  */
 public class HelloApp {
     public static void main(String[] args) {
-        // Default name
-        String name = "World";
-        
-        // Check if a name is provided as a command-line argument
+        String greeting;
+
         if (args.length > 0) {
-            name = args[0]; // Use the provided name
+            // Join all arguments with ", " using String.join (Java 8+)
+            String names = String.join(", ", args);
+            greeting = "Hello, " + names + "!";
+        } else {
+            greeting = "Hello, World!";
         }
-        
-        System.out.println("Hello, " + name + "!");
+
+        System.out.println(greeting);
     }
 }
